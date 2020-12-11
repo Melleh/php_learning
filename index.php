@@ -1,5 +1,5 @@
 <?php
-
+require 'functions.php';
 
 $dieren = [
     'koe',
@@ -19,8 +19,17 @@ $task = [
     'title'         =>  'fietsen',
     'due'           =>  'morgen',
     'assigned_to'   =>  'jan',
-    'completed'     =>  false
+    'completed'     =>  true,
+    'onTime'        =>  false
 ];
 
+
+
+
+
+
+if (ageCheck() = <= 18; {
+    echo 'not old enough'
+})
 
 require 'index.view.php';
