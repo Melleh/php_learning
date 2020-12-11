@@ -5,6 +5,6 @@ function ageCheck($age) {
         echo 'not allowed'
     }
 else { 
-    'come in'
+    'come in';
 }
 }
