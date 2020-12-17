@@ -1,27 +1,34 @@
 <?php
 require 'functions.php';
+require 'dd.php';
 
+$host = 'localhost';
+$dbname = 'MyTodo';
+$username = 'melvin';
+$password = '';
 
 
 try {
-    
-    $pdo = new PDO('mysql:host=localhost;MyTodo=', 'melvin', '');
 
-} catch (PDOException $e) {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
-    die($e->getMessage());
+
+} catch (PDOException $pe) {
+
+    die("Could not connect to the database $dbname :" . $pe->getMessage());
 
 }
+
+
+
 
 $statement = $pdo->prepare('select * from todos');
 
 $statement->execute();
 
-$tasks = $statement->fetchAll();
+$tasks = $statement->fetchAll(PDO::FETCH_OBJ);
 
-var_dump($statement->fetchAll());
-
-
+dd($tasks);
 
 
 
@@ -31,32 +38,34 @@ var_dump($statement->fetchAll());
 
 
 
-class Task
-{
-    protected $description;
-
-    protected $completed = false;
 
 
-    public function __construct($description)
+// class Task
+// {
+//     protected $description;
 
-    {
+//     protected $completed = false;
 
-        $this->description = $description;
-    }
 
-    public function complete()
-    {
-        $this->completed = true;
-    }
+//     public function __construct($description)
 
-    public function isComplete()
+//     {
 
-    {
+//         $this->description = $description;
+//     }
 
-        return $this->completed;
-    }
-}
+//     public function complete()
+//     {
+//         $this->completed = true;
+//     }
+
+//     public function isComplete()
+
+//     {
+
+//         return $this->completed;
+//     }
+// }
 
 
 
@@ -73,7 +82,7 @@ class Task
 
 
 
-require 'index.view.php';
+// require 'index.view.php';
 // require 'partials/agecheck.php';
 // require 'partials/dieren.php';
 // require 'partials/tasks.php';
