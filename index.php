@@ -3,6 +3,24 @@ require 'functions.php';
 
 
 
+try {
+    
+    $pdo = new PDO('mysql:host=localhost;MyTodo=', 'melvin', '');
+
+} catch (PDOException $e) {
+
+    die($e->getMessage());
+
+}
+
+$statement = $pdo->prepare('select * from todos');
+
+$statement->execute();
+
+$tasks = $statement->fetchAll();
+
+var_dump($statement->fetchAll());
+
 
 
 
@@ -26,7 +44,7 @@ class Task
 
         $this->description = $description;
     }
-    
+
     public function complete()
     {
         $this->completed = true;
@@ -39,12 +57,6 @@ class Task
         return $this->completed;
     }
 }
-
-
-
-
-
-
 
 
 
@@ -61,46 +73,7 @@ class Task
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-$dieren = [
-    'koe',
-    'kip',
-    'paard',
-    'reiger',
-    'tijger',
-    'emoe',
-    'buffel'
-];
-
-
-
-
-
-$task = [
-    'title'         =>  'fietsen',
-    'due'           =>  'morgen',
-    'assigned_to'   =>  'jan',
-    'completed'     =>  true,
-    'onTime'        =>  false
-];
-
-
-ageCheck(20);
-
-
-
-
-
 require 'index.view.php';
+// require 'partials/agecheck.php';
+// require 'partials/dieren.php';
+// require 'partials/tasks.php';
