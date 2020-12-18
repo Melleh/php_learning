@@ -1,7 +1,7 @@
 <?php
 
 function dd($input, $collapse=false) {
-    $recursive = function($data, $level=0) use (&$recursive, $collapse) {
+    $recursive = function($data, $level=0 ) use (&$recursive, $collapse) {
         global $argv;
 
         $isTerminal = isset($argv);
