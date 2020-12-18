@@ -15,68 +15,33 @@
 </head>
 
 <body>
-    <h1>To do lijstje</h1>
-    <!-- <ul>
-        <?php foreach ($task as $tasks => $value) : ?>
-            <li>
-                <strong><?= ucwords($tasks); ?>: </strong> <?= $value; ?>
-            </li>
-        <?php endforeach ?>
-    </ul> -->
 
     <ul>
 
-        <li>
-            <strong>Name: </strong> <?= $task['title']; ?>
-        </li>
-        <li>
-            <strong>Deadline: </strong> <?= $task['due']; ?>
-        </li>
-        <li>
-            <strong>Door: </strong> <?= $task['assigned_to']; ?>
-        </li>
-        <li>
-            <strong>Status: </strong>
-            <?php if ($task['completed']) : ?>
-                <span class="icon">&#9989</span>
+        <?php foreach ($tasks as $task) : ?>
 
-            <?php else : ?>
+            <li>
 
-                <span class="icon">&#10062</span>
+                <?php if ($task->completed) : ?>
 
-            <?php endif ?>
-        </li>
-        <li>
-            <strong>Op tijd: </strong>
-            <?php if ($task['onTime']) : ?>
-                <span class="icon">&#9989</span>
+                    <strike><?= $task->description; ?></strike>
 
-            <?php else : ?>
+                <?php else: ?>
 
-                <span class="icon">&#10062</span>
+                    <?= $task->description; ?>
 
-            <?php endif ?>
-        </li>
+                <?php endif; ?>
 
+            </li>
+
+        <?php endforeach; ?>
 
     </ul>
 
 
-
-
-
-
-
-    <!-- <h1>Dieren lijst</h1>
-    <ul>
-        <?php foreach ($dieren as $dier) {
-            echo "<li>$dier</li>";
-        }   ?>
-    </ul> -->
-
-
-
-
+<?php // require 'partials/tasks.php';  ?>
+<?php // require 'partials/agecheck.php';   ?>
+<?php // require 'partials/dieren.php'; ?>
 
 
 </body>
